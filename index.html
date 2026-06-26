@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>System Scan</title>
+<style>
+body {
+  background: #111;
+  color: #00ff66;
+  font-family: monospace;
+  text-align: center;
+  padding-top: 80px;
+}
+.box {
+  max-width: 500px;
+  margin: auto;
+  border: 2px solid #00ff66;
+  padding: 30px;
+  border-radius: 10px;
+}
+#bar {
+  width: 0%;
+  height: 20px;
+  background: #00ff66;
+  margin-top: 20px;
+}
+.container {
+  background: #333;
+  width: 100%;
+}
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+  <h1>🚨 SYSTEM SCAN 🚨</h1>
+  <p id="text">Έλεγχος συσκευής...</p>
+
+  <div class="container">
+    <div id="bar"></div>
+  </div>
+
+  <h2 id="result" class="hidden">
+    😂 PRANK!<br><br>
+    Η συσκευή σου είναι ασφαλής 😎
+  </h2>
+</div>
+
+<script>
+let progress = 0;
+let bar = document.getElementById("bar");
+let text = document.getElementById("text");
+
+let timer = setInterval(() => {
+  progress += 5;
+  bar.style.width = progress + "%";
+  text.innerHTML = "Σάρωση... " + progress + "%";
+
+  if (progress >= 100) {
+    clearInterval(timer);
+    text.innerHTML = "Ολοκλήρωση ελέγχου!";
+    document.getElementById("result").classList.remove("hidden");
+  }
+}, 200);
+</script>
+
+</body>
+</html>
